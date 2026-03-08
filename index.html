@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Bolesława i Mieczysława Wójcik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfaf7;
+            color: #2d2d2d;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .sepia-filter {
+            filter: sepia(0.3) contrast(1.1);
+        }
+        .section-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #f59e0b;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Hero Section -->
+    <header class="hero-gradient h-[60vh] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Historia Bolesława i Mieczysława Wójcik</h1>
+            <div class="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
+            <p class="text-xl md:text-2xl font-light italic">Kronika życia, dziedzictwa i pamięci</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 py-4 text-sm font-semibold uppercase tracking-wider text-gray-600">
+                <a href="#drzewo" class="hover:text-amber-600 transition">Drzewo</a>
+                <a href="#podkast" class="hover:text-amber-600 transition">Podkast</a>
+                <a href="#infografika" class="hover:text-amber-600 transition">Infografika</a>
+                <a href="#prezentacja" class="hover:text-amber-600 transition">Prezentacja</a>
+                <a href="#wideo" class="hover:text-amber-600 transition">Wideo</a>
+                <a href="#galeria" class="hover:text-amber-600 transition">Galeria</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 space-y-24">
+
+        <!-- Drzewo Genealogiczne -->
+        <section id="drzewo" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Drzewo Genealogiczne</h2>
+                <p class="text-gray-500">Korzenie i gałęzie rodziny Wójcik</p>
+            </div>
+            <div class="bg-amber-50 p-12 rounded-xl border-2 border-dashed border-amber-200 flex flex-col items-center justify-center min-h-[300px]">
+                <div class="text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto mb-4 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-2">Już wkrótce - w opracowaniu</h3>
+                    <p class="text-amber-700 opacity-75">Trwają prace nad szczegółowym odwzorowaniem więzi rodzinnych.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Podkast -->
+        <section id="podkast" class="scroll-mt-24 bg-zinc-900 text-white p-8 rounded-2xl overflow-hidden relative">
+            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div class="w-48 h-48 bg-amber-600 rounded-lg flex items-center justify-center shrink-0 shadow-2xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                </div>
+                <div class="text-center md:text-left w-full">
+                    <h2 class="text-3xl font-bold mb-4 text-amber-500">Podkast: Wojenna odyseja Wójcików</h2>
+                    <p class="text-zinc-400 mb-6 max-w-2xl italic">"Od Syberii po Brazylię" — posłuchaj unikalnej historii o losach rodziny w czasie wojny i po jej zakończeniu.</p>
+                    
+                    <div class="w-full max-w-xl">
+                        <audio controls class="w-full h-12 rounded-full">
+                            <source src="https://www.dropbox.com/scl/fi/nczrwo7poqg9u2gnc9bfq/Wojenna_odyseja_W-jcik-w_od_Syberii_po_Brazyli.m4a?rlkey=3f291j1adkerx54dezbxgswt5&st=z8thnhji&raw=1" type="audio/mp4">
+                            Twoja przeglądarka nie wspiera elementu audio.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+                <svg width="400" height="400" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="0.5" fill="none"/></svg>
+            </div>
+        </section>
+
+        <!-- Infografika -->
+        <section id="infografika" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Infografika: Ścieżka Życia</h2>
+                <p class="text-gray-500">Kluczowe fakty i momenty historyczne</p>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white p-4 rounded-2xl shadow-xl border-4 border-white overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/tlqd0b2kaejz71ym09sxi/infografika.png?rlkey=fpcikg0e1utmr21vb9htx4pjm&st=ksogcawi&raw=1" 
+                         alt="[Infografika historii rodziny Wójcik]" 
+                         class="w-full h-auto rounded-lg">
+                </div>
+                <p class="text-center mt-6 text-gray-400 text-sm italic">Opracowanie graficzne najważniejszych dat i wydarzeń</p>
+            </div>
+        </section>
+
+        <!-- Prezentacja -->
+        <section id="prezentacja" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Prezentacja Archiwalna</h2>
+                <p class="text-gray-500">Obejrzyj "The Wójcik Odyssey" bezpośrednio w przeglądarce</p>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="iframe-container mb-8">
+                    <!-- Embedded Office Online Viewer for the PPTX file -->
+                    <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fwww.dropbox.com%2Fscl%2Ffi%2Fon0pcj93dvocctmqt9arh%2FThe_W-jcik_Odyssey_prezentacja.pptx%3Frlkey%3Djhclzpiwjomwloup928valx08%26st%3Digfrv75s%26raw%3D1" width="100%" height="100%" frameborder="0">
+                        Twoja przeglądarka nie wspiera ramek iframe. 
+                        <a href="https://www.dropbox.com/scl/fi/on0pcj93dvocctmqt9arh/The_W-jcik_Odyssey_prezentacja.pptx?rlkey=jhclzpiwjomwloup928valx08&st=igfrv75s&raw=1">Kliknij tutaj, aby pobrać prezentację.</a>
+                    </iframe>
+                </div>
+                <div class="text-center">
+                    <a href="https://www.dropbox.com/scl/fi/on0pcj93dvocctmqt9arh/The_W-jcik_Odyssey_prezentacja.pptx?rlkey=jhclzpiwjomwloup928valx08&st=igfrv75s&raw=1" 
+                       class="inline-flex items-center gap-2 text-amber-600 hover:text-amber-800 font-semibold transition underline underline-offset-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Pobierz plik na dysk
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Podsumowanie Wideo -->
+        <section id="wideo" class="scroll-mt-24 py-12 bg-amber-50 rounded-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Podsumowanie Wideo</h2>
+                <p class="text-gray-500">Dziedzictwo Wójcików — filmowa opowieść</p>
+            </div>
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-black aspect-video border-8 border-white">
+                    <video controls class="w-full h-full object-cover">
+                        <source src="https://www.dropbox.com/scl/fi/lvkfivisdhx0qm9iyaov6/Dziedzictwo_W-jcik-w.mp4?rlkey=h894xykdsm6kmqtvh2k29kdsj&st=2g4udyv9&raw=1" type="video/mp4">
+                        Twoja przeglądarka nie wspiera elementu wideo.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria foto -->
+        <section id="galeria" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Galeria Foto</h2>
+                <p class="text-gray-500">Zatrzymane w czasie momenty</p>
+            </div>
+            
+            <!-- Information about collection in progress -->
+            <div class="bg-amber-100/50 border border-amber-200 p-6 rounded-xl text-center mb-12">
+                <p class="text-amber-800 font-bold text-xl uppercase tracking-widest">Już wkrótce</p>
+                <p class="text-amber-700">Pełna kolekcja zdigitalizowanych fotografii rodzinnych jest w trakcie przygotowania.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-50 grayscale hover:grayscale-0 transition duration-500">
+                <div class="space-y-4">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" alt="[Zdjęcie rodzinne]">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1508921234172-b68ed335b3e6?q=80&w=600&auto=format&fit=crop" alt="[Portret Bolesława]">
+                </div>
+                <div class="space-y-4">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=600&auto=format&fit=crop" alt="[Praca w polu]">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=600&auto=format&fit=crop" alt="[Stara maszyna]">
+                </div>
+                <div class="space-y-4">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" alt="[Dom rodzinny]">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=600&auto=format&fit=crop" alt="[Ogród]">
+                </div>
+                <div class="space-y-4">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=600&auto=format&fit=crop" alt="[Pamiątki]">
+                    <img class="h-auto max-w-full rounded-lg sepia-filter" src="https://images.unsplash.com/photo-1526413232644-8a40f03cc0c6?q=80&w=600&auto=format&fit=crop" alt="[Spotkanie]">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-100 border-t border-zinc-200 py-12 mt-24">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h3 class="text-xl font-bold mb-6 text-gray-700">Pamięć o Bolesławie i Mieczysławie Wójcik</h3>
+            <div class="w-12 h-0.5 bg-amber-400 mx-auto mb-6"></div>
+            <p class="text-gray-500 text-sm mb-4">Wszelkie prawa do materiałów archiwalnych zastrzeżone przez rodzinę Wójcik.</p>
+            <p class="text-gray-600 font-medium">Wykonano na podstawie materiałów zebranych przez Sabinę Martela oraz Elżbietę Ciepielewską</p>
+            <p class="text-gray-600 font-medium mt-2">Stronę przygotował wnuk Grzegorz Ciepielewski</p>
+            <div class="mt-8 text-xs text-gray-400">
+                &copy; 2026 Archiwum Rodzinne Wójcików. Wszystkie pamiątki są chronione.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
