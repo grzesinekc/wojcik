@@ -16,22 +16,17 @@
             font-family: 'Playfair Display', serif;
         }
         .hero-gradient {
-            /* Wykorzystanie przesłanej grafiki nagłówka */
             background: linear-gradient(rgba(45, 26, 12, 0.6), rgba(45, 26, 12, 0.6)), url('https://www.dropbox.com/scl/fi/iztlxz1hfnacekc817dip/naglowek.png?rlkey=uppoyfaxuwtmztwusa6kzu3y1&st=u9cpjow3&raw=1');
             background-size: cover;
             background-position: center;
         }
         .sepia-filter {
-            filter: sepia(0.3) contrast(1.1);
+            filter: sepia(0.4) contrast(1.05) brightness(0.95);
+            transition: all 0.5s ease;
         }
-        .section-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        .section-card:hover {
-            transform: translateY(-5px);
+        .gallery-item:hover .sepia-filter {
+            filter: sepia(0) contrast(1) brightness(1);
+            transform: scale(1.05);
         }
         html {
             scroll-behavior: smooth;
@@ -42,7 +37,7 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
@@ -56,7 +51,6 @@
             height: 100%;
             border: 0;
         }
-        /* Stylizowany orzeł w tle nagłówka */
         .eagle-emblem {
             position: absolute;
             top: 50%;
@@ -68,13 +62,24 @@
             pointer-events: none;
             z-index: 1;
         }
+
+        /* Modal Styles */
+        #photo-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header / Hero Section -->
     <header class="hero-gradient h-[65vh] flex items-center justify-center text-center text-white px-4 relative overflow-hidden">
-        <!-- SVG Orzeł Wojskowy jako element dekoracyjny tła -->
         <div class="eagle-emblem">
             <svg viewBox="0 0 100 100" fill="white">
                 <path d="M50,10 L52,15 L58,15 L54,19 L56,25 L50,21 L44,25 L46,19 L42,15 L48,15 Z M50,25 C40,25 30,35 25,50 C20,65 30,85 50,90 C70,85 80,65 75,50 C70,35 60,25 50,25 Z M30,50 L20,45 L15,55 L25,60 Z M70,50 L80,45 L85,55 L75,60 Z" />
@@ -82,7 +87,6 @@
         </div>
         
         <div class="max-w-4xl relative z-10">
-            <!-- Tytuł z "i" przeniesionym do nowej linii -->
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl">
                 Historia Bolesława<br>i Mieczysława Wójcik
             </h1>
@@ -112,7 +116,7 @@
         <!-- Infografika -->
         <section id="infografika" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Infografika: Ścieżka Życia</h2>
+                <h2 class="text-3xl font-bold mb-2 text-stone-800">Infografika: Ścieżka Życia</h2>
                 <p class="text-gray-500 italic">Kluczowe fakty i momenty historyczne Polski wplecione w losy braci</p>
             </div>
             <div class="max-w-5xl mx-auto">
@@ -128,7 +132,7 @@
         <!-- Drzewo Genealogiczne -->
         <section id="drzewo" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Drzewo Genealogiczne</h2>
+                <h2 class="text-3xl font-bold mb-2 text-stone-800">Drzewo Genealogiczne</h2>
                 <p class="text-gray-500 italic">Korzenie i gałęzie rodziny Wójcik</p>
             </div>
             <div class="bg-amber-50 p-12 rounded-xl border-2 border-dashed border-amber-200 flex flex-col items-center justify-center min-h-[300px]">
@@ -143,7 +147,7 @@
         </section>
 
         <!-- Podkast -->
-        <section id="podkast" class="scroll-mt-24 bg-zinc-900 text-white p-8 rounded-2xl overflow-hidden relative border-b-4 border-amber-600">
+        <section id="podkast" class="scroll-mt-24 bg-zinc-900 text-white p-8 rounded-2xl overflow-hidden relative border-b-4 border-amber-600 shadow-2xl">
             <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
                 <div class="w-48 h-48 bg-amber-600 rounded-lg flex items-center justify-center shrink-0 shadow-2xl overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 absolute" alt="[Mikrofon]">
@@ -156,7 +160,7 @@
                     <p class="text-zinc-400 mb-6 max-w-2xl italic">"Od Syberii po Brazylię" — posłuchaj unikalnej historii o losach rodziny w czasie wojny i po jej zakończeniu.</p>
                     
                     <div class="w-full max-w-xl">
-                        <audio controls class="w-full h-12 rounded-full">
+                        <audio controls class="w-full h-12 rounded-full shadow-lg">
                             <source src="https://www.dropbox.com/scl/fi/nczrwo7poqg9u2gnc9bfq/Wojenna_odyseja_W-jcik-w_od_Syberii_po_Brazyli.m4a?rlkey=3f291j1adkerx54dezbxgswt5&st=z8thnhji&raw=1" type="audio/mp4">
                             Twoja przeglądarka nie wspiera elementu audio.
                         </audio>
@@ -168,8 +172,8 @@
         <!-- Prezentacja -->
         <section id="prezentacja" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Prezentacja Archiwalna</h2>
-                <p class="text-gray-500">Obejrzyj "The Wójcik Odyssey" bezpośrednio w przeglądarce</p>
+                <h2 class="text-3xl font-bold mb-2 text-stone-800">Prezentacja Archiwalna</h2>
+                <p class="text-gray-500 italic">Obejrzyj "The Wójcik Odyssey" bezpośrednio w przeglądarce</p>
             </div>
             <div class="max-w-5xl mx-auto">
                 <div class="iframe-container mb-8">
@@ -191,9 +195,9 @@
         </section>
 
         <!-- Podsumowanie Wideo -->
-        <section id="wideo" class="scroll-mt-24 py-12 bg-amber-50 rounded-3xl border-t-4 border-amber-200">
+        <section id="wideo" class="scroll-mt-24 py-12 bg-amber-50 rounded-3xl border-t-4 border-amber-200 shadow-sm">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Podsumowanie Wideo</h2>
+                <h2 class="text-3xl font-bold mb-2 text-stone-800">Podsumowanie Wideo</h2>
                 <p class="text-gray-500 italic">Dziedzictwo Wójcików — filmowa opowieść o pokoleniach</p>
             </div>
             <div class="max-w-4xl mx-auto px-4">
@@ -209,36 +213,78 @@
         <!-- Galeria foto -->
         <section id="galeria" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Galeria Foto</h2>
-                <p class="text-gray-500 italic">Zatrzymane w czasie momenty rodzinne</p>
+                <h2 class="text-3xl font-bold mb-2 text-stone-800">Galeria Foto</h2>
+                <p class="text-gray-500 italic">Kliknij zdjęcie, aby powiększyć i zobaczyć szczegóły</p>
             </div>
             
             <div class="bg-amber-100/30 border border-amber-200 p-8 rounded-xl text-center mb-12">
-                <p class="text-amber-800 font-bold text-xl uppercase tracking-widest mb-2">Już wkrótce</p>
-                <p class="text-amber-700">Pełna kolekcja zdigitalizowanych fotografii rodzinnych jest w trakcie przygotowania przez redakcję.</p>
+                <p class="text-amber-800 font-bold text-xl uppercase tracking-widest mb-2">Pamiątki Rodzinne</p>
+                <p class="text-amber-700">Zdigitalizowane fotografie i dokumenty z archiwum rodziny Wójcików.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition duration-700 ease-in-out">
-                <div class="space-y-4">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" alt="[Archiwalne zdjęcie rodzinne]">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1508921234172-b68ed335b3e6?q=80&w=600&auto=format&fit=crop" alt="[Vintage portret]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/a7nooo080mnnhxchw7fzh/Projekt-bez-nazwy-1.png?rlkey=6930rwz5k3rtpkn87hfgrsttr&st=g97abjm7&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 1">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 1</p>
                 </div>
-                <div class="space-y-4">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=600&auto=format&fit=crop" alt="[Praca na roli]">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=600&auto=format&fit=crop" alt="[Zabytkowe narzędzia]">
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/1pepw2jtz2gs53mt79ecz/Projekt-bez-nazwy-2.png?rlkey=irutpcqolnn3h242wdu11gkvo&st=xm9aag3i&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 2">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 2</p>
                 </div>
-                <div class="space-y-4">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" alt="[Dawny dom rodzinny]">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=600&auto=format&fit=crop" alt="[Widok na stare domostwo]">
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/mi5364ksaa9guwrvczm0b/Projekt-bez-nazwy-3.png?rlkey=j8ikma0a2zo7ymd2aj7uh4rrc&st=k63j2lmi&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 3">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 3</p>
                 </div>
-                <div class="space-y-4">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=600&auto=format&fit=crop" alt="[Stare pamiątki i ordery]">
-                    <img class="h-auto max-w-full rounded-lg sepia-filter shadow-sm" src="https://images.unsplash.com/photo-1526413232644-8a40f03cc0c6?q=80&w=600&auto=format&fit=crop" alt="[Dawne spotkanie]">
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/xjfyo3cov2lf3tpes9ij3/Projekt-bez-nazwy-4.png?rlkey=ih5ofcmxrtt5sn20h2or2eqi0&st=4465cnzv&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 4">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 4</p>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/8gpqdm67ox5td8uy408ah/Projekt-bez-nazwy-6.png?rlkey=jmk7ye7xldeozudn8h7tw7xnt&st=yx2633q1&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 5">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 5</p>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/e9nf70ftcbxb7t6xc2qb6/Projekt-bez-nazwy-5.png?rlkey=6heds95xvwqjnxxben58idlg3&st=a3eegxee&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 6">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 6</p>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item group cursor-pointer" onclick="openLightbox(this)">
+                    <div class="bg-white p-2 rounded-sm shadow-md overflow-hidden aspect-square flex items-center justify-center">
+                        <img class="sepia-filter w-full h-full object-cover" src="https://www.dropbox.com/scl/fi/be7pn744gz27jft3ergkb/Projekt-bez-nazwy-7.png?rlkey=e0hveb5kc2kk02a2qqfxqaqqe&st=obr9h3lh&raw=1" alt="Archiwalne zdjęcie rodziny Wójcików - Materiał 7">
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500 italic text-center px-2">Zdjęcie archiwalne nr 7</p>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Modal for Lightbox -->
+    <div id="photo-modal" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full flex flex-col items-center">
+            <img id="modal-img" src="" alt="" class="max-h-[80vh] rounded-lg border-4 border-white shadow-2xl">
+            <p id="modal-caption" class="text-white mt-4 text-xl font-light italic text-center"></p>
+            <button class="absolute top-0 right-0 -mt-10 text-white text-4xl hover:text-amber-500 transition">&times;</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-stone-100 border-t border-stone-200 py-12 mt-24">
@@ -254,5 +300,28 @@
         </div>
     </footer>
 
+    <script>
+        function openLightbox(element) {
+            const modal = document.getElementById('photo-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            const clickedImg = element.querySelector('img');
+
+            modalImg.src = clickedImg.src;
+            modalCaption.innerText = clickedImg.alt; 
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('photo-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
 </body>
 </html>
